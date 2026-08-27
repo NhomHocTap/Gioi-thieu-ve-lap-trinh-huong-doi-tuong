@@ -1,0 +1,671 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{vietnam}
+\usepackage[vietnamese]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{fontspec}
+\usepackage{float}
+\usepackage{anyfontsize}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage[left=3.00cm, right=2.00cm, top=2.00cm, bottom=2.00cm]{geometry}
+\usepackage{cellspace}
+\cellspacetoplimit=5pt 
+\cellspacebottomlimit=5pt 
+
+\setmainfont{Times New Roman}
+
+\everymath{\displaystyle}
+
+\begin{document}
+
+\section*{BÀI TẬP CHƯƠNG 2: BIẾN NGẪU NHIÊN}
+
+
+\textbf{Câu 1.} Gieo một con xúc xắc cân đối và đồng chất. Gọi X là số chấm ở mặt trên con xúc xắc
+
+\textbf{a.} Bảng phân phối xác suất của $X$:
+
+
+
+\[
+P(X = k) = \frac{1}{6}, \quad k = 1,2,3,4,5,6
+\]
+
+
+
+\begin{tabular}{|Sc|Sc|Sc|Sc|Sc|Sc|Sc|}
+\hline
+\rule{0pt}{10pt}Giá trị $X$ & 1 & 2 & 3 & 4 & 5 & 6 \\
+\hline
+\rule{0pt}{20pt}Xác suất $P(X)$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ \\[8pt]
+\hline
+\end{tabular}
+
+\vspace{1em}
+
+\textbf{b.} Hàm phân phối:
+
+
+
+\[
+F(x) = P(X < x) =
+\begin{dcases}
+0& \text{khi } x < 1 \\
+\frac{1}{6} & \text{khi } 1 \le x < 2 \\
+\frac{2}{6}& \text{khi } 2 \le x < 3\\
+\frac{3}{6} & \text{khi } 3 \le x < 4 \\
+\frac{4}{6} & \text{khi } 4 \le x < 5 \\
+\frac{5}{6} & \text{khi } 5 \le x < 6 \\
+1& \text{khi } x \ge 6\\
+\end{dcases}
+\]
+
+
+
+\vspace{1em}
+
+\textbf{Đồ thị hàm phân phối:}
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\draw[->] (0,0) -- (7,0) node[right] {$x$};
+\draw[->] (0,0) -- (0,1.2) node[above] {$F(x)$};
+
+% các đoạn bậc thang
+\draw[thick] (0,0) -- (1,0);
+\draw[dashed] (1,0) -- (1,0.166);
+\draw[thick] (1,0.166) -- (2,0.166);
+\draw[dashed] (2,0) -- (2,0.333);
+\draw[thick] (2,0.333) -- (3,0.333);
+\draw[dashed] (3,0) -- (3,0.5);
+\draw[thick] (3,0.5) -- (4,0.5);
+\draw[dashed] (4,0) -- (4,0.666);
+\draw[thick] (4,0.666) -- (5,0.666);
+\draw[dashed] (5,0) -- (5,0.833);
+\draw[thick] (5,0.833) -- (6,0.833);
+\draw[dashed] (6,0) -- (6,1);
+\draw[thick] (6,1) -- (7,1);
+
+% nhãn
+\foreach \x in {1,...,6}
+  \draw (\x,0) -- (\x,-0.05) node[below] {\x};
+\end{tikzpicture}
+\end{center}
+
+\textbf{Câu 2.} Gieo đồng thời 2 con xúc xắc cân đối và đồng chất. Gọi Y là tổng số chấm ở mặt trên của 2 con xúc xắc.
+
+\textbf{a.} Lập bảng phân phối xác suất của Y.
+
+
+\[
+P(Y = k) = \frac{\text{số cách để tổng bằng } k}{36}, \quad k = 2,3,\dots,12
+\]
+
+
+\begin {tabular}{|Sc|Sc|Sc|Sc|Sc|Sc|Sc|Sc|Sc|Sc|Sc|Sc|}
+\hline 
+\rule{0pt}{10pt}Giá trị $X$ & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+\hline
+\rule{0pt}{10pt}Tần số $n$ & 1 & 2 & 3 & 4 & 5 & 6 & 5 & 4 & 3 & 2 & 1 \\
+\hline
+\rule{0pt}{20pt}Xác suất $P(X)$ & $\frac{1}{36}$ & $\frac{2}{36}$ & $\frac{3}{36}$ & $\frac{4}{36}$ & $\frac{5}{36}$ & $\frac{6}{36}$ & $\frac{5}{36}$ & $\frac{4}{36}$ & $\frac{3}{36}$ & $\frac{2}{36}$ & $\frac{1}{36}$ \\[6pt]
+\hline
+\end{tabular}
+
+\vspace{1em}
+
+\textbf{b.} Hàm phân phối:
+
+
+
+\[
+F(x) = P(X < x) = 
+\begin{dcases}
+    0& \text{khi } x < 2 \\
+    \frac{1}{36}& \text{khi } 2 \le x < 3 \\
+    \frac{3}{36}& \text{khi } 3 \le x < 4 \\
+    \frac{6}{36}& \text{khi } 4 \le x < 5 \\
+    \frac{10}{36}& \text{khi } 5 \le x < 6 \\
+    \frac{15}{36}& \text{khi } 6 \le x < 7 \\
+    \frac{21}{36}& \text{khi } 7 \le x < 8 \\
+    \frac{26}{36}& \text{khi } 8 \le x < 9 \\
+    \frac{30}{36}& \text{khi } 9 \le x < 10 \\
+    \frac{33}{36}& \text{khi } 10 \le x < 11 \\
+    \frac{35}{36}& \text{khi } 11 \le x < 12 \\
+    1& \text{khi } x \ge 12 \\
+\end{dcases}
+\]
+
+\vspace{4em}
+
+\textbf{Câu 3.} 
+
+\begin{itemize}
+    % Bước 1: Mô hình hóa
+    \item Gọi $X$ là số hạt đậu đỏ được lấy ra khi chọn ngẫu nhiên 2 hạt từ bát. 
+    
+    Vì trong bát chỉ có 2 hạt đậu đỏ nên số hạt đỏ thu được có thể là 0, 1 hoặc 2 hạt. Do đó, $X$ là biến ngẫu nhiên rời rạc nhận các giá trị trong tập hợp:  $X \in \{0, 1, 2\}$
+    
+    Ta cần lập bảng phân phối xác suất của $X$, viết biểu thức hàm phân phối tích lũy $F(x) = P(X < x)$, và tính xác suất $P(0 < X < 2)$ bằng cách tính trực tiếp và thông qua hàm phân phối.
+
+    % Bước 2: Phân tích
+    \item Số cách chọn ngẫu nhiên 2 hạt đậu từ tổng số 5 hạt đậu trong bát là:
+    $ n(\Omega) = C_5^2 = 10 $
+    
+    Xác suất tại $X = k$ (với $k \in \{0, 1, 2\}$) là $\displaystyle P(X = k) = \frac{C_2^k \cdot C_3^{2-k}}{C_5^2}$
+    
+    Hàm phân phối của biến ngẫu nhiên rời rạc $X$ được xác định theo công thức: \\ $\displaystyle F(x) = P(X < x) = \sum_{x_i < x} (p_i)$
+    
+    Xác suất trong khoảng $P(0 < X < 2)$ theo:
+    \begin{itemize}
+        \item Cách tính trực tiếp: Xác định giá trị nguyên của $X$ trong khoảng $(0, 2)$ và lấy xác suất tại điểm đó.
+        \item Cách tính qua hàm phân phối: Áp dụng tính chất $ \forall a < b, \\P(a \le X < b) = F(b) - F(a)$.
+    \end{itemize}
+
+    % Bước 3: Tính toán
+    \textbf{a.} Lập bảng phân phối xác suất của $X$.
+    \begin{itemize}
+        \item Với $X = 0$: $\displaystyle P(X = 0) = \frac{C_2^0 \cdot C_3^2}{C_5^2} = \frac{1 \cdot 3}{10} = \frac{3}{10}$
+        \item Với $X = 1$: $\displaystyle P(X = 1) = \frac{C_2^1 \cdot C_3^1}{C_5^2} = \frac{2 \cdot 3}{10} = \frac{6}{10}$
+        \item Với $X = 2$: $\displaystyle P(X = 2) = \frac{C_2^2 \cdot C_3^0}{C_5^2} = \frac{1 \cdot 1}{10} = \frac{1}{10}$
+    \end{itemize}
+
+    Ta có bảng phân phối xác suất của $X$:
+    \begin{center}
+        \begin{tabular}{|Sc|Sc|Sc|Sc|}
+            \hline
+            $X$ & 0 & 1 & 2 \\
+            \hline
+            \rule{0pt}{20pt}$P$ & $\displaystyle \frac{3}{10}$ & $\displaystyle \frac{6}{10}$ & $\displaystyle \frac{1}{10}$ \\ [6pt]
+            \hline
+        \end{tabular}
+    \end{center}
+    
+    \textbf{b.} ADCT $F(x) = P(X < x) = \sum_{x_i < x} (p_i)$ với $ P(X=0)=\frac{3}{10}$, $P(X=1)=\frac{6}{10}$, $P(X=2)=\frac{1}{10}$ ta được hàm phân phối của biến ngẫu nhiên rời rạc $X$ là:
+    \[ F(x) = \begin{dcases} 
+      0 & \text{khi } x \le 0 \\ 
+      \frac{3}{10} & \text{khi } 0 < x \le 1 \\ 
+      \frac{9}{10} & \text{khi } 1 < x \le 2 \\ 
+      1 & \text{khi } x > 2 
+   \end{dcases} \]
+    
+    \textbf{c.} Tính $P(0 < X < 2)$:
+    \begin{itemize}
+        \item \text{Tính trực tiếp:} Trong khoảng $(0;2)$ , biến ngẫu nhiên $X$ nhận duy nhất giá trị nguyên là $X = 1$. Do đó:
+        \[ P(0 < X < 2) = P(X = 1) = \frac{6}{10} \]
+        \item \text{Tính thông qua hàm phân phối:} 
+        \begin{align*}
+        & P(0 < X < 2) = F(2) - F(0) \\
+        \Rightarrow & P(0 < X < 2) = \frac{9}{10} - \frac{3}{10} = \frac{6}{10}
+        \end{align*}
+    \end{itemize}
+
+    % Bước 4: Kết luận
+    Vậy xác suất để chỉ lấy được một hạt đậu đỏ là $P(X=1)=\frac{6}{10}$
+\end{itemize}
+
+\clearpage
+
+\textbf{Bài 4:}
+
+\begin{itemize}
+    % Bước 1: Mô hình hóa
+    \item Gọi $A_1, A_2, A_3$ lần lượt là các biến cố bộ phận thứ nhất, thứ hai, thứ ba bị hỏng trong khoảng thời gian $t$. Theo giả thiết, các bộ phận hoạt động độc lập nên $A_1, A_2, A_3$ là các biến cố độc lập có xác suất tương ứng:
+    \[ P(A_1) = 0,2; \quad P(A_2) = 0,3; \quad P(A_3) = 0,25 \]
+    \[\Rightarrow P(\overline{A}_1) = 0,8; \quad P(\overline{A}_2) = 0,7; \quad P(\overline{A}_3) = 0,75 \]
+    
+    Gọi $X$ là số bộ phận bị hỏng trong khoảng thời gian $t$. Vì thiết bị chỉ gồm có 3 bộ phận nên $X$ là biến ngẫu nhiên rời rạc nhận các giá trị trong tập hợp: $X \in \{0, 1, 2, 3\}$
+    
+   Ta cần xác định quy luật phân phối xác suất của $X$, lập biểu thức hàm phân phối tích lũy $F(x) = P(X < x)$ và tính xác suất $\displaystyle P(0 < X \le 4)$ bằng 2 cách khác nhau.
+
+    % Bước 2: Phân tích
+    \item Để tính xác suất tại $X = k$ (với $k \in \{0, 1, 2, 3\}$), ta phân tích biến cố thành các biến cố độc lập rồi thực hiện nhân xác suất
+    \begin{itemize}
+        \item Với $X = 0$: Cả 3 bộ phận đều hoạt động tốt.
+        \item Với $X = 1$: Có đúng 1 bộ phận hỏng và 2 bộ phận còn lại tốt.
+        \item Với $X = 2$: Có đúng 2 bộ phận hỏng và 1 bộ phận còn lại tốt.
+        \item Với $X = 3$: Cả 3 bộ phận đều bị hỏng.
+    \end{itemize}
+    
+    Hàm phân phối của biến ngẫu nhiên rời rạc $X$ được xác định theo công thức: \\ $\displaystyle F(x) = P(X < x) = \sum_{x_i < x} (p_i)$
+    
+    Ta cần tính xác suất $P(0 < X \le 4)$ nhưng vì cận trên $b=4$ nằm ngoài tập giá trị của $X$ $(X \in \{0, 1, 2, 3\})$ nên ta chỉ cần tính $P(0 < X < 4)$ :
+    \begin{itemize}
+        \item Cách tính trực tiếp: Xác định giá trị nguyên của $X$ trong khoảng $(0, 4)$ và lấy xác suất tại điểm đó.
+        \item Cách tính qua hàm phân phối: Áp dụng tính chất $ \forall a < b, \\P(a \le X < b) = F(b) - F(a)$ .
+    \end{itemize}
+    
+
+    % Bước 3: Tính toán
+    \textbf{a.}
+    Xác suất tại các điểm chia của biến ngẫu nhiên $X$:
+    \begin{align*}
+        P(X = 0) &= P(\overline{A}_1 \overline{A}_2 \overline{A}_3) = 0,8 \times 0,7 \times 0,75 = 0,42 \\
+        P(X = 1) &= P(A_1 \overline{A}_2 \overline{A}_3) + P(\overline{A}_1 A_2 \overline{A}_3) + P(\overline{A}_1 \overline{A}_2 A_3) \\
+        &= 0,2 \times 0,7 \times 0,75 + 0,8 \times 0,3 \times 0,75 + 0,8 \times 0,7 \times 0,25 \\
+        &= 0,105 + 0,180 + 0,140 = 0,425 \\
+        P(X = 2) &= P(A_1 A_2 \overline{A}_3) + P(A_1 \overline{A}_2 A_3) + P(\overline{A}_1 A_2 A_3) \\
+        &= 0,2 \times 0,3 \times 0,75 + 0,2 \times 0,7 \times 0,25 + 0,8 \times 0,3 \times 0,25 \\
+        &= 0,045 + 0,035 + 0,060 = 0,14 \\
+        P(X = 3) &= P(A_1 A_2 A_3) = 0,2 \times 0,3 \times 0,25 = 0,015
+    \end{align*}
+
+    \clearpage
+
+    \textbf{b.}
+    
+    Ta có bảng phân phối xác suất của $X$:
+    \begin{center}
+        \begin{tabular}{|Sc|Sc|Sc|Sc|Sc|}
+            \hline
+            $X$ & 0 & 1 & 2 & 3 \\
+            \hline
+            $P$ & 0,42 & 0,425 & 0,14 & 0,015 \\
+            \hline
+        \end{tabular}
+    \end{center}
+    
+    ADCT $\displaystyle F(x) = P(X < x) = \sum_{x_i < x} (p_i)$ với $P(X=0)=0,42$, $P(X=1)=0,425$, \\$P(X=2)=0,14$, $P(X=3)=0,015$ ta được hàm phân phối của biến ngẫu nhiên rời rạc $X$ là: $X$:
+    \[ F(x) = \begin{dcases} 
+        0 & \text{khi } x \le 0 \\ 
+        0,42 & \text{khi } 0 < x \le 1 \\ 
+        0,845 & \text{khi } 1 < x \le 2 \\ 
+        0,985 & \text{khi } 2 < x \le 3 \\
+        1 & \text{khi } x > 3
+    \end{dcases} \]
+    
+    \textbf{c.}   Tính $ P(0 < X < 4)$ :
+    \begin{itemize}
+        \item \text{Tính trực tiếp:} Trong khoảng $(0, 4)$, biến ngẫu nhiên $X$ nhận các giá trị $X \in \{1, 2, 3\}$. Do đó:
+        \begin{align*}
+            & P(0 < X < 4) = P(X = 1) + P(X = 2) + P(X = 3) \\
+            \Rightarrow\ & P(0 < X < 4) = 0,425 + 0,14 + 0,015 = 0,58
+        \end{align*}
+        \item \text{Tính thông qua hàm phân phối:}
+        \begin{align*}
+            & P(0 < X < 4) = F(4) - F(0)  \\
+            \Rightarrow\ & P(0 < X < 4) = 1 - 0,42 = 0,58 \text{  (Vì $4 > 3$ nên $F(4)=1$)}
+        \end{align*}
+    \end{itemize}
+    
+    Vậy trong thời gian t thiết bị không hỏng hoặc hỏng 1, 2, 3 bộ phận có xác suất tương ứng là 42\%, 42,5\%, 14\%, 0,15\% và xác suất để thiết bị xảy ra sự cố hỏng từ 1 đến 3 bộ phận trong thời gian t là 0,58
+    
+\end{itemize}
+
+\clearpage
+
+\textbf{Bài 5:}
+
+\begin{itemize}
+    \item Ta có $X$ là số viên đạn còn lại sau khi xạ thủ ngừng bắn và $Y$ là số viên đạn đã sử dụng.
+    
+    Do xạ thủ chỉ có 5 viên đạn và sẽ dừng lại khi có 2 viên đạn liên tiếp trúng tâm.\\
+    $\Rightarrow$ Số đạn sẽ sử dụng tối thiểu là 2 viên và nhiều nhất là bắn hết 5 viên. Do đó, $X$ là biến ngẫu nhiên rời rạc có tập giá trị: $X \in \{0, 1, 2, 3\}$ $\Rightarrow Y \in \{2, 3, 4, 5\}$ \\
+
+    Ta cần lập bảng phân phối xác suất của $X$ và viết biểu thức hàm phân phối tích lũy $F(x) = P(X < x)$.
+
+    \item Gọi $T$ là biến cố bắn "Trúng tâm" và $\overline{T}$ là biến cố bắn "Trượt". Theo đề bài, ta có xác suất cho mỗi lần bắn độc lập là:
+    \[ P(T) = 0,95 \quad \text{và} \quad P(\overline{T}) = 1 - 0,95 = 0,05 \]
+    
+    Để tính xác suất tại $X = k$ (với $k \in \{0, 1, 2, 3\}$), ta phân tích biến cố thành các biến cố độc lập rồi thực hiện nhân xác suất
+    \begin{itemize}
+        \item Tại $X=3$ ($Y=2$): 2 viên đầu đều trúng.
+        \item Tại $X=2$ ($Y=3$): Viên thứ nhất trượt, viên thứ 2 và 3 trúng.
+        \item Tại $X=1$ ($Y=4$): Viên thứ 3 và 4 trúng, viên thứ 2 trượt, viên thứ 1 có thể trúng hoặc trượt.
+        \item Tại $X=0$ ($Y=5$): Trong 4 viên đầu tiên không có viên nào liên tiếp trúng tâm (Biến cố đối của tổng 3 biến cố X=1, X=2, X=3).
+    \end{itemize}
+
+\textbf{a.} Xác suất tại các điểm chia của biến ngẫu nhiên $X$:
+    \begin{align*}
+        P(X=3) &= P(TT) = 0,95 \times 0,95 = \frac{361}{400} \\
+        P(X=2) &= P(\overline{T}TT) = 0,05 \times 0,95 \times 0,95 = \frac{361}{8000} \\
+        P(X=1) &= P(T\overline{T}TT \cup \overline{T}\overline{T}TT) = P(T\overline{T}TT) + P(\overline{T}\overline{T}TT) \\
+        &=(0,95 \times 0,05 \times 0,95 \times 0,95) + (0,05 \times 0,05 \times 0,95 \times 0,95)\\
+        &=\frac{361}{8000} \\
+        P(X=0) &= 1 - [P(X=3) + P(X=2) + P(X=1)]\\
+        &= 1- (\frac{361}{400} + \frac{361}{8000} + \frac{361}{8000}) = \frac{29}{4000}
+    \end{align*}
+
+    Ta có bảng phân phối xác suất của biến ngẫu nhiên $X$:
+    \begin{center}
+        \begin{tabular}{|Sc|Sc|Sc|Sc|Sc|}
+            \hline
+            $X$  & 0 & 1 & 2 & 3 \\
+            \hline
+            $P$  & $\frac{29}{4000}$ & $\frac{361}{8000}$ & $\frac{361}{8000}$ & $\frac{361}{400}$ \\
+            \hline
+        \end{tabular}
+    \end{center}
+    
+    \clearpage
+
+    \textbf{b.}
+    ADCT $\displaystyle F(x) = P(X < x) = \sum_{x_i < x} (p_i)$ với $P(X=0) = \frac{29}{4000}$, $P(X=1) = \frac{361}{8000}$,\\ $P(X=2) = \frac{361}{8000}$, $P(X=3) = \frac{361}{400}$ ta được hàm phân phối của biến ngẫu nhiên rời rạc $X$ có dạng:
+    \[ F(X) = \begin{dcases}
+    0 & \text{khi } x \le 0 \\
+    \frac{29}{4000} &\text{khi } 0 < x \le 1 \\ 
+    \frac{419}{8000} &\text{khi } 1 < x \le 2 \\
+    \frac{39}{400} &\text{khi } 2 < x \le 3 \\
+    1 & \text{khi } x \ge 3 \\
+    \end{dcases}
+    \]
+
+    \item Bảng phân phối khả năng xạ thủ bắn trúng 2 viên vẫn còn thừa 3 viên đạn là \~90,25\%.\\
+    Hàm phân phối $F(x)$ cho thấy xác suất sau khi bắn, số viên đạn còn lại ít hơn 3 chỉ \~10\%.
+\end{itemize}
+
+\textbf{Bài 6:}
+\begin{itemize}
+    % Bước 1: Mô hình hóa bài toán
+    \item Ta có $X$ là số viên đạn mà xạ thủ đã bắn từ tổng số 6 viên đạn mang theo.
+    
+    Xạ thủ sẽ dừng bắn khi đạt được 3 viên liên tiếp trúng vòng 10 hoặc khi đã sử dụng hết sạch số đạn $\Rightarrow$ số viên đạn bắn ra ít nhất là 3 viên và tối đa là 6 viên. Do đó, $X$ là biến ngẫu nhiên rời rạc có tập giá trị: da$X \in \{3, 4, 5, 6\}$
+    
+    Lại có $Y$ là số viên đạn còn lại sau khi dừng bắn. $\Rightarrow Y \in \{0, 1, 2, 3\} $
+    
+    Ta cần lập bảng phân phối xác suất của $X$, viết biểu thức hàm phân phối tích lũy $\displaystyle F(x) = P(X < x)$, và xác định quy luật phân phối xác suất của đại lượng $Y$.
+
+    % Bước 2: Phân tích toán học
+    \item Gọi $T$ là biến cố bắn "Trúng vòng 10" và $\overline{T}$ là biến cố "Bắn trượt vòng 10". Theo đề bài ta có xác suất mỗi lần bắn độc lập là:
+    \[ P(T) = 0,85 \quad \text{và} \quad P(\overline{T}) = 1 - 0,85 = 0,15 \]
+    
+    Để tính xác suất tại $X = k$ (với $k \in \{3, 4, 5, 6\}$), ta phân tích biến cố thành các biến cố độc lập rồi thực hiện nhân xác suất
+    \begin{itemize}
+        \item $X = 3$: 3 viên đầu đều trúng.
+        \item $X = 4$: Phát đầu trượt, phát thứ 2, 3, 4 đều trúng.
+        \item $X = 5$: Phát thứ 2 trượt, phát thứ 1 có thể trúng hoặc trượt, phát thứ 3, 4, 5 trúng.
+        \item $X = 6$: Trong 5 viên đầu không có viên nào trúng hoặc trượt \\ $\Rightarrow$ Biến cố đối của tổng 3 biến cố X=3, X=4, X=5
+    \end{itemize}
+    Gọi $A$ là biến cố xạ thủ dừng lại do đã bắn trúng 3 viên
+    Hàm phân phối tích lũy được tính theo công thức $\displaystyle F(x) = P(X < x) = \sum_{x_i < x} (p_i)$. \\ Mà $Y=6-X \Rightarrow \displaystyle P(Y = y) = P(X = 6 - y \cap A)$.
+
+\clearpage
+
+    \textbf{a.}
+    \begin{spacing}{1.3}
+    Xác suất tại các điểm chia của biến ngẫu nhiên $X$:
+    \begin{align*}
+        P(X = 3) &= P(TTT) = 0,85^3 = 0,614125 \\
+        P(X = 4) &= P(\overline{T}TTT) = 0,15 \times 0,85^3 = 0,09211875 \\
+        P(X = 5) &= P(T\overline{T}TTT) + P(\overline{T}\overline{T}TTT) \\
+        &= (0,85 \times 0,15 \times 0,85^3) + (0,15 \times 0,15 \times 0,85^3) \\
+        &= (0,85 + 0,15) \times 0,15 \times 0,85^3 = 0,15 \times 0,85^3 = 0,09211875 \\
+        P(X = 6) &= 1 - [P(X = 3) + P(X = 4) + P(X = 5)] \\
+        &= 1 - (0,614125 + 0,09211875 + 0,09211875) \\
+        &= 0,2016375
+    \end{align*}
+    
+    Ta có bảng phân phối xác suất của biến ngẫu nhiên $X$:
+    \begin{center}
+        \begin{tabular}{|Sc|Sc|Sc|Sc|Sc|}
+            \hline
+            $X$ & 3 & 4 & 5 & 6 \\
+            \hline
+            $P$ & 0,614125 & 0,09211875 & 0,09211875 & 0,2016375 \\
+            \hline
+        \end{tabular}
+    \end{center}
+    
+    \textbf{b.}
+    ADCT $\displaystyle F(x) = P(X < x) = \sum_{x_i < x} (p_i)$ với $P(X=3) = 0,61425$, \\ $P(X=4) = 0,09211875$, $P(X=5) = 0,09211875$, $P(X=6) = 0,2016375$ ta được hàm phân phối của biến ngẫu nhiên $X$ có dạng
+    \[ F(x) = \begin{cases} 
+        0 & \text{khi } x \le 3 \\ 
+        0,614125 & \text{khi } 3 < x \le 4 \\ 
+        0,70624375 & \text{khi } 4 < x \le 5 \\ 
+        0,7983625 & \text{khi } 5 < x \le 6 \\
+        1 & \text{khi } x > 6
+    \end{cases} \]
+    
+    \textbf{c.}
+   Ta có:
+    \[
+    \begin{aligned}
+        P(A) &= P(X=3 \cap A) + P(X=4 \cap A) + P(X=5 \cap A) + P(X=6 \cap A) \\
+        &= P(X=3) + P(X=4) + P(X=5) + P(X=6 \cap A) \\
+        &\text{(vì } (X=3) \subset A, \, (X=4) \subset A, \, (X=5) \subset A)
+    \end{aligned}
+    \]
+
+    \clearpage
+
+    Xét $(X=6 \cap A) = \{TT\overline{T}TTT, T\overline{T}\overline{T}TTT, \overline{T}T\overline{T}TTT, \overline{T}\overline{T}\overline{T}TTT\}$.\\
+    \[ 
+    \begin{aligned}
+        \rightarrow P(X=6 \cap A) &= (0.85^2 + 2 \times 0.85 \times 0.15 + 0.15^2) \times 0.15 \times 0.85^3 \\
+        &= 1 \times 0.15 \times 0.85^3 \\
+        &= 0.09211875 
+    \end{aligned}
+    \]
+
+    $\Rightarrow P(A) = 0.614125 + 3 \times 0.09211875 = 0.89048125 $
+
+    Áp dụng công thức xác suất có điều kiện $P(Y = y \mid A) = \frac{P(Y = y \cap A)}{P(A)} = \frac{P(X = x \cap A)}{P(A)}$, ta thu được phân phối xác suất của số đạn còn lại $Y$:
+    \begin{align*}
+        P(Y = 3 \mid A) &= \frac{P(X = 3)}{P(A)} = \frac{0.614125}{0.89048125} = \frac{20}{29} \\
+        P(Y = 2 \mid A) &= \frac{P(X = 4)}{P(A)} = \frac{0.09211875}{0.89048125} = \frac{3}{29} \\
+        P(Y = 1 \mid A) &= \frac{P(X = 5)}{P(A)} = \frac{0.09211875}{0.89048125} = \frac{3}{29} \\
+        P(Y = 0 \mid A) &= \frac{P(X=6 \cap A)}{P(A)} = \frac{0.09211875}{0.89048125} = \frac{3}{29}
+    \end{align*}
+    
+    Ta có bảng phân phối xác suất của biến $Y$:
+    \begin{center}
+        \begin{tabular}{|Sc|Sc|Sc|Sc|Sc|}
+            \hline
+            $Y$ & 0 & 1 & 2 & 3 \\
+            \hline
+            $P$ & $\displaystyle \frac{3}{29}$ & $\displaystyle \frac{3}{29}$ & $\displaystyle \frac{3}{29}$ & $\displaystyle \frac{20}{29}$ \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \end{spacing}
+
+    % Bước 4: Kết luận thực tế
+    \item Do xạ thủ có năng lực bắn rất tốt (tỷ lệ trúng vòng 10 lên đến $85\%$), quy luật phân phối chỉ ra rằng có tới hơn $61.41\%$ khả năng anh ta chỉ cần bắn đúng loạt 3 viên tối thiểu là hoàn thành bài kiểm tra và bảo toàn nguyên vẹn được 3 viên đạn còn lại trong băng.
+    
+    Hàm tích lũy $F(x)$ phản ánh đúng sự biến thiên tăng dần của xác suất dừng bắn theo số lượng đạn tiêu thụ. Đồng thời, xác suất xạ thủ gặp xui xẻo bắn hết sạch cả 6 viên đạn (không còn viên nào thừa, $Y=0$) rơi vào khoảng $20,16\%$.
+\end{itemize} 
+
+\textbf{Bài 7:}
+
+\begin{itemize}
+
+    \item Ta có $X$ và $Y$ là 2 biến ngẫu nhiên độc lập, xác suất để cặp biến cố $(X=x)$ và $(Y=y)$ đồng thời xảy ra được tính bằng:
+    \[
+    P(X=x, Y=y) = P(X = x)P(Y = y)
+    \]
+    Để xác định phân phối xác suất cho hàm số $Z=g(x, Y)$, ta thực hiện tính xác suất xuất hiện tất cả các cặp giá trị $(x_i, y_i)$ của hệ.
+    \[
+    P(Z=z_k) = \sum_{g(x_i,y_i)=z_k} P(X=x_i)P(Y=y_i)
+    \]
+    \item Xác suất tại các điểm chia của $X^2$:
+    \[
+    \begin{aligned}
+    P(X^2 = 0) &= P(X = 0) = 0,3\\
+    P(X^2 = 1) &= P(X = 1) = P(X = -1) + P(X = 1) = 0,2 + 0,3 = 0,5 \\
+    P(X^2 = 2) &= P(X = 2) = 0,2
+    \end{aligned}
+    \]
+    Ta có bảng phân phối của $X^2$
+    \begin{center}
+        \begin{tabular}{|Sc|Sc|Sc|Sc|}
+            \hline
+            $X^2$ & 0 & 1 & 4 \\
+            \hline
+            $P$ & 0,3 & 0,5 & 0,2\\
+            \hline        
+        \end{tabular}
+    \end{center}
+    \item Xác suất tại các điểm chia của $X+Y$:
+    \[
+    \begin{aligned}
+    P(X + Y = -2) &= (P(X = -1)P(Y = -1)) = 0,2 \times 0,3 = 0,06 \\
+    P(X + Y = -1) &= (P(X = -1)P(Y = 0)) + (P(X = 0)P(Y = -1)) \\
+    &= 0,2 \times 0,4 + 0,3 \times 0,3 = 0,17 \\ 
+    P(X + Y = 0) &= (P(X = -1)P(Y = 1)) + (P(X = 0)P(Y = 0)) + (P(X=1)P(Y = -1)) \\
+    &= 0,2 \times 0,3 + 0,3 \times 0,4 + 0,3 \times 0,3 = 0,27\\
+    P(X + Y = 1) &= (P(X = 0)P(Y = 1)) + (P(X = 1)P(Y = 0)) + (P(X = 2)P(Y = -1)) \\
+    &= 0,3 \times 0,3 + 0,3 \times 0,4 + 0,2 \times 0,3 = 0,27 \\
+    P(X + Y = 2) &= (P(X = 1)P(Y = 1)) + (P(X = 2)P(Y = 0)) \\
+    &= 0,3 \times 0,3 + 0,2 \times 0,4 = 0,17 \\
+    P(X + Y = 3) &= (P(X = 2)P(Y = 1)) = 0,2 \times 0,3 = 0,06
+    \end{aligned}
+    \]
+    Ta có bảng phân phối xác suất của $X + Y$:
+    \begin{center}
+        \begin{tabular}{|Sc|Sc|Sc|Sc|Sc|Sc|Sc|}
+        \hline
+        $X+Y$ & -2 & -1 & 0 & 1 & 2 & 3\\
+        \hline
+        $P$ & 0,06 & 0,17 & 0,27 & 0,27 & 0,17 & 0,06 \\
+        \hline 
+        \end{tabular}
+    \end{center}
+
+    \item Xác suất tại các điểm chia của $2Y$:
+    \[
+    \begin{aligned}
+    P(2Y = -2) &= P(Y = -1) = 0,3 \\
+    P(2Y = 0) &= P(Y = 0) = 0,4 \\
+    P(2Y = 2) &= P(Y = 1) = 0,3 \\
+    \end{aligned}
+    \]
+    Ta có bảng phân phối xác suất của $2Y$
+    \begin{center}
+        \begin{tabular}{|Sc|Sc|Sc|Sc|}
+        \hline
+        $2Y$ & -2  & 0 &  2 \\
+        \hline
+        $P$ & 0,3 & 0,4 & 0,3 \\
+        \hline
+        \end{tabular}
+    \end{center}
+
+    \clearpage
+
+    \item Xác suất tại các điểm chia của $X=2Y$
+    \[
+    \begin{aligned}
+        P(X - 2Y = -3) &= (P(X = -1)P(Y = 1)) = 0,2 \times 0,3 = 0,06 \\
+        P(X - 2Y = -2) &= (P(X = 0)P(Y = 1)) = 0,3 \times 0,3 = 0,09 \\
+        P(X - 2Y = -1) &= (P(X = -1)P(Y = 0)) + (P(X = 1)P(Y = 1)) \\
+        &= 0,2 \times 0,4 + 0,3 \times 0,3 = 0,17\\
+        P(X - 2Y = 0) &= (P(X = 0)P(Y = 0)) + (P(X = 2)P(Y = 1)) \\
+        &= 0,3 \times 0,4 + 0,2 \times 0,3 = 0,18\\
+        P(X - 2Y = 1) &= (P(X = -1)P(Y = -1)) +(P(X = 1)P(Y = 0)) \\
+        &= 0,2 \times 0,3 + 0,3 \times 0,4 = 0,18 \\
+        P(X - 2Y = 2) &= (P(X = 0)P(Y = -1)) + (P(X = 2)P(Y = 0)) \\
+        &= 0,3 \times 0,3 + 0,2 \times 0,4 = 0,17 \\
+        P(X - 2Y = 3) &= (P(X = 1)P(Y = -1)) = 0,3 \times 0,3 = 0,09 \\
+        P(X - 2Y = 4) &= (P(X = 2)P(Y = -1)) = 0,2 \times 0,3 = 0,06\\
+    \end{aligned}
+    \]
+    \begin{center}
+        \begin{tabular}{|Sc|Sc|Sc|Sc|Sc|Sc|Sc|Sc|Sc|}
+        \hline
+        $X - 2Y$ & -3 & -2 & -1 & 0 & 1 & 2 & 3 & 4 \\
+        \hline
+        $P$ & 0,06 & 0,09 & 0,17 & 0,18 & 0,18 & 0,17 & 0,09 & 0,06\\
+        \hline        
+        \end{tabular}
+    \end{center}
+    \item Xác suất tại các điểm chia của $XY$:
+    \[
+    \begin{aligned}
+        P(XY = -2) &= (P(X = 2)P(Y = -1)) = 0,2 \times 0,3 = 0,06 \\
+        P(XY = -1) &= (P(X = 1)P(Y = -1)) + (P(X = -1)P(Y = 1)) \\
+        &= 0,3 \times 0,3 + 0,3 \times 0,3 = 0,18 \\
+        P(XY = 0) &= (P(X = 2)P(Y = 0)) + (P(X = 1)P(Y = 0)) + (P(X = 0)P(Y = 0)) \\ &+ (P(X = 1)P(Y = 0)) + (P(X = 0)P(Y = -1)) + (P(X = 0)P(Y = 1))\\
+        &= 0,2 \times 0,4 + 0,3 \times 0,4 + 0,3 \times 0,4 + 0,2 \times 0,4 + 0,3 \times 0,3 + 0,3 \times 0,3 = 0,58 \\
+        P(XY = 1) &= (P(X = 1)P(Y = 1)) + (P(X = -1)P(Y = -1)) \\
+        &= 0,3 \times 0,3 + 0,3 \times 0,3 = 0,18\\
+        P(XY =2) &= (P(X = 2)P(Y = 1)) = 0,2 \times 0,3 = 0,06 \\
+    \end{aligned}
+    \]
+    Ta có bảng phân phối xác suất của $XY$:
+    \begin{center}
+        \begin{tabular}{|Sc|Sc|Sc|Sc|Sc|Sc|}
+            \hline
+            $XY$ & -2 & -1 & 0 & 1 & 2 \\
+            \hline
+            $P$ & 0,06 & 0,18 & 0,58 & 0,18 & 0,06 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{itemize}
+
+\clearpage
+
+\textbf{Bài 9:}
+\textbf{a. Tìm xác suất của biến cố $\{0 < X < 1\}$}
+
+Áp dụng công thức tính xác suất khi đã có hàm phân phối:\\
+$P(a < X < b) = F(b) - F(a)$ \\
+$\Rightarrow P(0 < X < 1) = F(1) - F(0)$
+\begin{itemize}
+    \item Với:
+    $F(1) = \frac{1}{2} + \frac{1}{\pi} \operatorname{arctg}(1) = \frac{1}{2} + \frac{1}{\pi} \cdot \frac{\pi}{4} = \frac{1}{2} + \frac{1}{4} = \frac{3}{4}$
+    
+    \item Với $F(0) = \frac{1}{2} + \frac{1}{\pi} \operatorname{arctg}(0) = \frac{1}{2} + \frac{1}{\pi} \cdot 0 = \frac{1}{2}$
+\end{itemize}
+$\Rightarrow P(0 < X < 1) = \frac{3}{4} - \frac{1}{2} = \frac{1}{4}$ 
+
+\textbf{b. Tìm hàm mật độ của $X$}
+
+Hàm mật độ $f(x) = F'(x) = \left( \frac{1}{2} + \frac{1}{\pi} \operatorname{arctg} x \right)'$ \\
+Mà $(\operatorname{arctg} x)' $ là $\frac{1}{x^2 + 1}$
+$\Rightarrow f(x) = \frac{1}{\pi (1 + x^2)}, \quad x \in \mathbb{R}$
+
+
+\textbf{Bài 10:}
+
+Cho biến ngẫu nhiên Weibull có hàm phân phối với $x > 0$ ($x_0$ và $m$ là các hằng số dương):
+$$F(x) = 1 - e^{-\frac{x^m}{x_0}}$$
+Thừa nhận với $x \le 0$, ta có $F(x) = 0$.
+
+\textbf{a. Tìm hàm mật độ tương ứng}
+
+Với $x > 0$ ta có hàm mật độ $f(x) = F'(x)$:
+$$f(x) = \left( 1 - e^{-\frac{x^m}{x_0}} \right)' = - e^{-\frac{x^m}{x_0}} \cdot \left( -\frac{x^m}{x_0} \right)'$$
+$$f(x) = e^{-\frac{x^m}{x_0}} \cdot \frac{m \cdot x^{m-1}}{x_0}$$
+Hàm mật độ $f(x)$ là
+$$f(x) = \begin{cases} \frac{m}{x_0} x^{m-1} e^{-\frac{x^m}{x_0}} & \text{nếu } x > 0 \\ 0 & \text{nếu } x \le 0 \end{cases}$$
+
+\textbf{c. Tìm Mod}
+Đặt $g(x) = \ln f(x)$ với $x > 0$:
+$$g(x) = \ln\left(\frac{m}{x_0}\right) + (m-1)\ln x - \frac{x^m}{x_0}$$
+
+$$\Rightarrow g'(x) = \frac{m-1}{x} - \frac{m \cdot x^{m-1}}{x_0} = 0$$
+$$\iff \frac{m-1}{x} = \frac{m \cdot x^{m-1}}{x_0} \iff x^m = \frac{x_0(m-1)}{m}$$
+
+
+\begin{itemize}
+    \item \textbf{Với $m > 1$}: Phương trình có nghiệm duy nhất:
+    $$x_{mod} = \left[ \frac{x_0(m-1)}{m} \right]^{\frac{1}{m}}$$
+    
+    \item \textbf{Với $0 < m \le 1$}: $g'(x) < 0$ $\forall$ $x > 0$ nên hàm nghịch biến và đạt cực đại tại:
+    $$x_{mod} = 0$$
+\end{itemize}
+
+\textbf{Bài 11:}
+\begin{itemize}
+\item $p(x) = ae^{-x^2}$ là hàm mật độ của biến ngẫu nhiên liên tục $X$ 
+$$\implies \int_{-\infty}^{+\infty} p(x) \, dx = 1 $$
+
+\item  Tìm $a$:\\
+$$ \int_{-\infty}^{+\infty} p(x) \, dx = 1 $$
+$$ \int_{-\infty}^{+\infty} ae^{-x^2} \, dx = 1 $$ $$ a \int_{-\infty}^{+\infty} e^{-x^2} \, dx = 1 $$
+$$ a \cdot \sqrt{\pi} = 1 $$ $$ a = \frac{1}{\sqrt{\pi}} $$
+
+\item 2. Tìm xác suất để biến ngẫu nhiên thuộc khoảng $(-\infty, 0)$
+
+$$ P(X \in (-\infty, 0)) $$ $$= P(-\infty < X < 0) $$ $$ \int_{-\infty}^{0} p(x) \, dx $$ $$ \int_{-\infty}^{0} \frac{1}{\sqrt{\pi}} e^{-x^2} \, dx $$
+$$ \frac{1}{\sqrt{\pi}} \int_{-\infty}^{0} e^{-x^2} \, dx $$
+$$\frac{1}{\sqrt{\pi}} \cdot \frac{1}{2} \int_{-\infty}^{+\infty} e^{-x^2} \, dx $$ $$ \frac{1}{\sqrt{\pi}} \cdot \frac{\sqrt{\pi}}{2} = \frac{1}{2}$$
+Vậy $a = \frac{1}{\sqrt{\pi}}$ và xác suất cần tìm trên khoảng $(-\infty, 0)$ là $\frac{1}{2}$.
+\end{itemize}
+\end{document}
